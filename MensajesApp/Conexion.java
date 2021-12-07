@@ -6,20 +6,27 @@ import java.sql.SQLException;
 public class Conexion {
 
     public Connection get_connection() {
-        Connection conection = null;
-        try {
-            conection = DriverManager.getConnection("jdbc:mysql://localhost:3306/mensajes_app", "root", "1234");
-            if (conection != null) {
-                System.out.println("bien");
-            } else {
-                
-            }
-        } catch (SQLException e) {
-            System.out.println(e);
-        } 
-        return conection;
-        
-    }
+       
+        Connection singletonConn = null;
 
-    
+        if (singletonConn == null) {
+            try {
+
+                String host = "jdbc:mysql://localhost:3306/mensajes_app";
+                String uName = "root";
+                String uPass = "1234";
+
+                singletonConn = DriverManager.getConnection(host, uName, uPass);
+
+                 //if (singletonConn != null) {
+                 //    System.out.printf("Successfully connected to the db...\n");
+                 //}
+            } catch (SQLException e) {
+                System.out.println(e.getMessage());
+            }
+        }
+        return singletonConn;
+    }
 }
+        
+    
