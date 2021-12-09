@@ -17,7 +17,8 @@ public class Inicio {
             "2. Lista mensajes " + "\n" +
             "3. Editar mensaje " + "\n" +
             "4. Eliminar mensaje " + "\n" +
-            "5. Salir " + "\n");
+            "5. Salir " + "\n" +
+            "Seleccione la opcion que desea: " + "\n");
             
             opcion = sc.nextInt();
 

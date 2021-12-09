@@ -21,6 +21,7 @@ public class MensajesService {
     }
     
     public static void listaMensaje() {
+        MensajesCRUD.leerMensajeBD();
 
     }
     

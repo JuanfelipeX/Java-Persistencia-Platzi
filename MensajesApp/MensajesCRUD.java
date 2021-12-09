@@ -2,6 +2,9 @@ package MensajesApp;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+
+import com.mysql.cj.xdevapi.Result;
 
 public class MensajesCRUD {
 
@@ -17,20 +20,38 @@ public class MensajesCRUD {
                 ps.setString(1, mensajes.getMensaje());
                 ps.setString(2, mensajes.getAutorMensaje());
                 ps.executeUpdate();
-                System.out.println("Mensaje creado correctamente");
+                System.out.println("Mensaje creado correctamente :D");
 
             } catch (Exception e) {
-                System.out.println("Mensaje no creado " + e);
+                System.out.println("Mensaje no creado :c" + e);
             }
             
         } catch (Exception e) {
             System.out.println(e);
         }
-
     }
     
     public static void leerMensajeBD() {
+        Conexion conexionBD = new Conexion();
 
+        try (Connection conexion = conexionBD.get_connection()) {
+            PreparedStatement ps = null;
+            ResultSet rs = null;
+            
+            String query = "SELECT * FROM mensajes";
+            ps = conexion.prepareStatement(query);
+            rs = ps.executeQuery();
+            
+            while (rs.next()) {
+                System.out.println("Id: " + rs.getInt("id_mensaje") + "\n" + 
+                "Mensaje: " + rs.getString("mensaje") + "\n" +
+                "Autor: " + rs.getString("autor_mensaje") + "\n" +
+                "Fecha: " + rs.getString("fecha_mensaje") + "\n");
+            }
+
+        } catch (Exception e) {
+            System.out.println("No se pudo obtener los menesajes :c" + "\n" + e);
+        }
     }
 
     public static void borrarMensajeBD(int idMensaje) {
