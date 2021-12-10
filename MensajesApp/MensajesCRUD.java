@@ -55,6 +55,26 @@ public class MensajesCRUD {
     }
 
     public static void borrarMensajeBD(int idMensaje) {
+        Conexion conexionBD = new Conexion();
+
+        try (Connection conexion = conexionBD.get_connection()) {
+            PreparedStatement ps = null;
+
+            try {
+                String query = "DELETE FROM mensajes WHERE id_mensaje = ?";  
+                ps = conexion.prepareStatement(query);
+                ps.setInt(1, idMensaje);
+                ps.executeUpdate();
+                System.out.println("El mensaje ha sido borrado");
+
+            } catch (Exception e) {
+                System.out.println("No se pudo borrar el mensaje :c" + e);
+            }
+            
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+            
 
     }
     

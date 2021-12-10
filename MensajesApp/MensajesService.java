@@ -26,6 +26,10 @@ public class MensajesService {
     }
     
     public static void borrarMensaje() {
+        System.out.println("Escriba el id del mensaje");
+        int idMensaje = Integer.parseInt(sc.nextLine());
+
+        MensajesCRUD.borrarMensajeBD(idMensaje);
 
     }
     
