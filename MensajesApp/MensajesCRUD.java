@@ -3,7 +3,6 @@ package MensajesApp;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-
 import com.mysql.cj.xdevapi.Result;
 
 public class MensajesCRUD {
@@ -20,10 +19,10 @@ public class MensajesCRUD {
                 ps.setString(1, mensajes.getMensaje());
                 ps.setString(2, mensajes.getAutorMensaje());
                 ps.executeUpdate();
-                System.out.println("Mensaje creado correctamente :D");
+                System.out.println("\n" + "Mensaje creado correctamente :D");
 
             } catch (Exception e) {
-                System.out.println("Mensaje no creado :c" + e);
+                System.out.println("Mensaje no creado :c" + "\n" + e);
             }
             
         } catch (Exception e) {
@@ -65,10 +64,10 @@ public class MensajesCRUD {
                 ps = conexion.prepareStatement(query);
                 ps.setInt(1, idMensaje);
                 ps.executeUpdate();
-                System.out.println("El mensaje ha sido borrado");
+                System.out.println("\n" + "El mensaje ha sido borrado :D");
 
             } catch (Exception e) {
-                System.out.println("No se pudo borrar el mensaje :c" + e);
+                System.out.println("No se pudo borrar el mensaje :c" + "\n" + e);
             }
             
         } catch (Exception e) {
@@ -79,6 +78,28 @@ public class MensajesCRUD {
     }
     
     public static void actualizarMensajeBD(Mensajes mensajes) {
+
+        Conexion conexionBD = new Conexion();
+
+        try (Connection conexion = conexionBD.get_connection()) {
+            PreparedStatement ps = null;
+
+            try {
+                String query = "UPDATE mensajes SET mensaje = ? WHERE id_mensaje = ?";
+                ps = conexion.prepareStatement(query);
+                ps.setString(1, mensajes.getMensaje());
+                ps.setInt(2, mensajes.getIdMensaje());
+                ps.executeUpdate();
+
+                System.out.println( "\n" + "El mensaje ha sido actualizado :D");
+
+            } catch (Exception e) {
+                System.out.println("No se pudo actualizar el mensaje :c" + "\n" + e);
+            }
+
+        } catch (Exception e) {
+            System.out.println(e);
+        }
         
     }
     

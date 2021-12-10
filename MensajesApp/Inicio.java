@@ -40,7 +40,8 @@ public class Inicio {
                     break;
 
                 case 5:
-                System.exit(0);
+                    System.out.println("bye... ");
+                    System.exit(0);
                     break;
             
                 default:
