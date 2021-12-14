@@ -1,9 +1,11 @@
+import java.io.IOException;
+
 import javax.swing.JOptionPane;
 import Servicios.GatosServicios;
 
 public class Inicio {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         int opcionMenu = -1;
         String[] botones = { "1. Ver Gatos", "2. Salir" };
 
