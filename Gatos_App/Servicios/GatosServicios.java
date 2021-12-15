@@ -60,21 +60,21 @@ public class GatosServicios {
 
         try {
             URL url = new URL(gatos.getUrl());
-            imagen = ImageIO.read(url);
+            imagen = ImageIO.read(url); 
 
             ImageIcon imagenGato = new ImageIcon(imagen);
 
-            if (imagenGato.getIconWidth() > 800) {
+            if (imagenGato.getIconWidth() > 800 && imagenGato.getIconHeight() > 600) {
 
-                //redimensiona
-                Image fondo = imagenGato.getImage();
-                Image modificado = fondo.getScaledInstance(800, 600, java.awt.Image.SCALE_SMOOTH);
-                imagenGato = new ImageIcon(modificado);
+                    //redimensiona
+                    Image fondo = imagenGato.getImage();
+                    Image modificado = fondo.getScaledInstance(500, 300, java.awt.Image.SCALE_SMOOTH);
+                    imagenGato = new ImageIcon(modificado);
             }
 
             String[] botones = { "1. Ver otra imagen", "2. Favorito", "3. Volver" };
-            String gatoId = gatos.getId();
-            String opciones = (String) JOptionPane.showInputDialog(null, menuGatosAleatorio, gatoId,
+            // String gatoId = gatos.getId(); obtiene el id del gato
+            String opciones = (String) JOptionPane.showInputDialog(null, "Seleccione alguna opcion :3", "Cute Cats",
                     JOptionPane.INFORMATION_MESSAGE, imagenGato, botones, botones[0]);
 
             //validacion que opcion seleccciono el usuario        
