@@ -20,6 +20,18 @@ public class GatosServicios {
     // https://github.com/santiaguf/gatos_app/blob/master/src/main/java/com/platzi/gatos_app/service/CatService.java
     //REPOSITORIO DEL PROFESOR
 
+    private static String BASE_URL = "https://api.thecatapi.com/v1/";
+    private static String SEARCH_ENDPOINT = BASE_URL + "images/search";
+    private static String FAVORITE_ENDPOINT = BASE_URL + "favourites";
+    private static String FavoriteMenu = "Opciones: \n"
+            + " 1. ver otra imagen \n"
+            + " 2. Eliminar Favorito \n"
+            + " 3. Volver \n";
+
+    private static String menuGatosAleatorio = "Opciones: \n"
+            + " 1. ver otra imagen \n"
+            + " 2. Favorito \n"
+            + " 3. Volver \n";
 
 
     public static void verGatos() throws IOException {
@@ -45,7 +57,7 @@ public class GatosServicios {
 
         //redimensionar la imagen
         Image imagen = null;
-        
+
         try {
             URL url = new URL(gatos.getUrl());
             imagen = ImageIO.read(url);
@@ -60,35 +72,37 @@ public class GatosServicios {
                 imagenGato = new ImageIcon(modificado);
             }
 
-            /*
-            String[] buttoms = { "ver otra imagen", "favorito", "volver" };
-            String catId = cat.getId();
-            String option = (String) JOptionPane.showInputDialog(null, randomCatsMenu, catId,
-                    JOptionPane.INFORMATION_MESSAGE, imagenGato, buttoms, buttoms[0]);
+            String[] botones = { "1. Ver otra imagen", "2. Favorito", "3. Volver" };
+            String gatoId = gatos.getId();
+            String opciones = (String) JOptionPane.showInputDialog(null, menuGatosAleatorio, gatoId,
+                    JOptionPane.INFORMATION_MESSAGE, imagenGato, botones, botones[0]);
 
-            int selection = -1;
-
-            for (int i = 0; i < buttoms.length; i++) {
-                if (option.equals(buttoms[i])) {
-                    selection = i;
+            //validacion que opcion seleccciono el usuario        
+            int seleccion = -1;
+            for (int i = 0; i < botones.length; i++) {
+                if (opciones.equals(botones[i])) {
+                    seleccion = i;
                 }
             }
 
-            switch (selection) {
+            switch (seleccion) {
                 case 0:
-                    seeRandomCats();
+                    verGatos();
                     break;
                 case 1:
-                    markCatAsFavorite(cat);
+                    marcarComoFavorito(gatos);
                     break;
                 default:
                     break;
             }
-            */
 
         } catch (IOException e) {
             System.out.println(e);
         }
+
+    }
+    
+    public static void marcarComoFavorito(Gatos gatos) {
         
     }
     
