@@ -1,0 +1,5 @@
+------------------- DESCARGAR ESTAS LIBRERIRAS PARA QUE EL PROGRAMA FUNCIONE --------------------------------------------
+Mysql Connector:  https://dev.mysql.com/downloads/connector/j/
+Gson:   https://search.maven.org/artifact/com.google.code.gson/gson/2.8.9/jar     #Seleccionar la ultima version
+okhttp:  https://jar-download.com/artifacts/com.squareup.okhttp3/okhttp/3.9.0/source-code      
+okio:    https://search.maven.org/artifact/com.squareup.okio/okio/3.0.0/jar        #Seleccionar la ultima version
