@@ -1,7 +1,7 @@
-package Servicios;
+package Gatos_App.Servicios;
 
 import com.google.gson.Gson;
-import Modelo.Gatos;
+import Gatos_App.Modelo.Gatos;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;

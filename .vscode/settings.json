@@ -2,9 +2,9 @@
     "java.project.referencedLibraries": [
         "lib/**/*.jar",
         "/home/PipeSex/Documents/mysql-connector-java-8.0.27/mysql-connector-java-8.0.27.jar",
-        "/home/PipeSex/Documents/gson-2.8.9.jar",
-        "/home/PipeSex/Documents/jar_files/okhttp-3.9.0.jar",
-        "/home/PipeSex/Documents/jar_files/okio-1.13.0.jar"
+        "C:/Users/pipes/Downloads/gson-2.8.9.jar",
+        "C:/Users/pipes/Downloads/okhttp-3.9.0.jar",
+        "C:/Users/pipes/Downloads/okio-1.13.0.jar"
 
     ],
     "maven.view": "hierarchical"

@@ -1,7 +1,10 @@
+package Gatos_App;
+
 import java.io.IOException;
 
 import javax.swing.JOptionPane;
-import Servicios.GatosServicios;
+
+import Gatos_App.Servicios.GatosServicios;
 
 public class Inicio {
 

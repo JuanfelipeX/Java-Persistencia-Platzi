@@ -1,4 +1,4 @@
-package Modelo;
+package Gatos_App.Modelo;
 
 public class Gatos {
 
