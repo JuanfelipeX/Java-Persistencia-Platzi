@@ -2,8 +2,10 @@ package Gatos_App.Servicios;
 
 import com.google.gson.Gson;
 import Gatos_App.Modelo.Gatos;
+import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
+import okhttp3.RequestBody;
 import okhttp3.Response;
 import java.awt.Image;
 import java.io.IOException;
@@ -73,8 +75,8 @@ public class GatosServicios {
             }
 
             String[] botones = { "1. Ver otra imagen", "2. Favorito", "3. Volver" };
-            // String gatoId = gatos.getId(); obtiene el id del gato
-            String opciones = (String) JOptionPane.showInputDialog(null, "Seleccione alguna opcion :3", "Cute Cats",
+             String gatoId = gatos.getId(); // obtiene el id del gato
+            String opciones = (String) JOptionPane.showInputDialog(null, "Seleccione alguna opcion :3", "Cute Cats" + "   " + gatoId  ,
                     JOptionPane.INFORMATION_MESSAGE, imagenGato, botones, botones[0]);
 
             //validacion que opcion seleccciono el usuario        
@@ -103,6 +105,30 @@ public class GatosServicios {
     }
     
     public static void marcarComoFavorito(Gatos gatos) {
+        try {
+
+            OkHttpClient client = new OkHttpClient();
+            MediaType mediaType = MediaType.parse("application/json");
+            RequestBody body = RequestBody.create(mediaType, "{\n\t\"image_id\":\"" + gatos.getId() + "\"\n}");
+            Request request = new Request.Builder()
+                    .url(FAVORITE_ENDPOINT)
+                    .post(body)
+                    .addHeader("Content-Type", "application/json")
+                    .addHeader("x-api-key", gatos.getApiKey())
+                    .build();
+
+            Response response = client.newCall(request).execute();
+
+            if (!response.isSuccessful()) {
+                response.body().close();
+            }
+
+        } catch (Exception e) {
+        }
+    }
+    
+
+    public static void verFavoritos() {
         
     }
     

@@ -15,7 +15,7 @@ public class Inicio {
         do {
 
             //menu principal
-            String opcion = (String) JOptionPane.showInputDialog(null, "Gatitos Java", "Menu Principal",
+            String opcion = (String) JOptionPane.showInputDialog(null, "Gatitos Java", "Menu Principal" ,
                     JOptionPane.INFORMATION_MESSAGE, null, botones, botones[0]);
 
                     //validacion de opcion seleccionada por usuario
@@ -28,7 +28,9 @@ public class Inicio {
                     switch (opcionMenu) { 
                         case 0:
                         GatosServicios.verGatos();
-                        break;  
+                        break;
+                    case 1:
+                        GatosServicios.verFavoritos();
                     
                         default:
                             break;
