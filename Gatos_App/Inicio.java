@@ -1,16 +1,15 @@
 package Gatos_App;
 
 import java.io.IOException;
-
 import javax.swing.JOptionPane;
-
+import Gatos_App.Modelo.Gatos;
 import Gatos_App.Servicios.GatosServicios;
 
 public class Inicio {
 
     public static void main(String[] args) throws IOException {
         int opcionMenu = -1;
-        String[] botones = { "1. Ver Gatos", "2. Salir" };
+        String[] botones = { "1. Ver Gatos", "2. Ver Favortios" , "3. Salir" };
 
         do {
 
@@ -18,7 +17,7 @@ public class Inicio {
             String opcion = (String) JOptionPane.showInputDialog(null, "Gatitos Java", "Menu Principal" ,
                     JOptionPane.INFORMATION_MESSAGE, null, botones, botones[0]);
 
-                    //validacion de opcion seleccionada por usuario
+                    //validacion de opcion seleccionada por usuario3
                     for (int i = 0; i < botones.length; i++) {
                         if (opcion.equals(botones[i])) {
                             opcionMenu = i;
@@ -30,7 +29,8 @@ public class Inicio {
                         GatosServicios.verGatos();
                         break;
                     case 1:
-                        GatosServicios.verFavoritos();
+                        Gatos gatos = new Gatos();
+                        GatosServicios.verFavoritos(gatos.getApiKey());
                     
                         default:
                             break;
