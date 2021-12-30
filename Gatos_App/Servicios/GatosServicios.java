@@ -24,13 +24,8 @@ public class GatosServicios {
     // https://github.com/santiaguf/gatos_app/blob/master/src/main/java/com/platzi/gatos_app/service/CatService.java
     // REPOSITORIO DEL PROFESOR
 
-    private static String BASE_URL = "https://api.thecatapi.com/v1/";
-    private static String SEARCH_ENDPOINT = BASE_URL + "images/search";
+    private static String BASE_URL = "https://api.thecatapi.com/v1/favourites/";
     private static String FAVORITE_ENDPOINT = BASE_URL + "favourites";
-    private static String FavoriteMenu = "Opciones: \n"
-            + " 1. ver otra imagen \n"
-            + " 2. Eliminar Favorito \n"
-            + " 3. Volver \n";
 
     private static String menuGatosAleatorio = "Opciones: \n"
             + " 1. ver otra imagen \n"
@@ -213,6 +208,24 @@ public class GatosServicios {
     }
 
     public void borrarFavorito(GatosFavoritos gatoFav) {
+
+        try {
+            OkHttpClient client = new OkHttpClient();
+
+            Request request = new Request.Builder()
+                    .url("https://api.thecatapi.com/v1/favourites/" + gatoFav.getId() + "")
+                    .delete(null)
+                    .addHeader("Content-Type", "application/json")
+                    .addHeader("x-api-key", gatoFav.getApiKey())
+                    .build();
+
+            Response response = client.newCall(request).execute();
+            if (!response.isSuccessful()) {
+                response.body().close();
+            }
+        } catch (IOException e) {
+            System.out.println(e);
+        }
 
     }
 
